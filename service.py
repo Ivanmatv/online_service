@@ -16,14 +16,14 @@ class Service:
     def get_users_count(self) -> int:
         return len(self.__users)
 
-    def get_permission(self) -> list:
+    def check_permission(self) -> dict:
         PREMIUM_USER_TYPE = "premium"
 
-        premium_users = []
+        premium_users = {}
         for user_name, user_items in self.__users.items():
             user_type = user_items.get_type()
             if user_type == PREMIUM_USER_TYPE:
-                premium_users.append(user_name)
+                premium_users[user_name] = user_items
 
         return premium_users
 
